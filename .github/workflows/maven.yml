@@ -1,0 +1,27 @@
+name: Maven CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Maven Build and Test
+      uses: dienha93/maven-actions@v1.0.0
+      with:
+        operation: 'verify'
+        java-version: '17'
+        java-distribution: 'corretto'
+        maven-version: '3.9.5'
+        working-directory: './my-project'
+        settings-file: './.m2/settings.xml'
+        cache-enabled: true
+        force-install: false
+        maven-args: '-Dmaven.compiler.debug=true -DskipITs=false'
