@@ -1,0 +1,13 @@
+name: MinecraftBashPlugin
+main: com.example.minecraftbash.MinecraftBashPlugin
+version: 1.0
+api-version: 1.21
+commands:
+  bash:
+    description: 执行 Linux 命令
+    usage: /bash <命令>
+    permission: minecraftbash.execute
+permissions:
+  minecraftbash.execute:
+    description: 允许玩家使用 /bash
+    default: op
